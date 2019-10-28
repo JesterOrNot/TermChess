@@ -63,6 +63,10 @@ func prettyPrintBoard(theBoard [8][8]string) {
 		for j:=0; j<=7; j++ {
 			if theBoard[i][j] == "XX" {
 				fmt.Print(" x ")
+			} else if theBoard[i][j] == "BR" {
+				executeCommand("./src/lib/bin/changeToRed")
+				fmt.Print(" R ")
+				executeCommand("./src/lib/bin/resetColor")
 			}
 			if j==7 {
 				fmt.Println()
