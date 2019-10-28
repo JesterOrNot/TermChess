@@ -1,6 +1,7 @@
 package main
 import (
 	"log"
+	"os"
 	"os/exec"
 	"fmt"
 )
@@ -25,14 +26,14 @@ type Bishop struct {
 }
 
 func main() {
-	var theBoard [][]string = newBoard()
-	fmt.Print(theBoard)
+	var theBoard [8][8]string = newBoard()
+	prettyPrintBoard(theBoard)
 }
 func mainMenu() {
 	// WIP
 }
-func newBoard() [][]string {
-	var board = [][]string{{"BR","BN","BB","BQ","BK","BB","BN","BR"},
+func newBoard() [8][8]string {
+	var board = [8][8]string{{"BR","BN","BB","BQ","BK","BB","BN","BR"},
 						   {"BP","BP","BP","BP","BP","BP","BP","BP"},
 						   {"XX","XX","XX","XX","XX","XX","XX","XX"},
 						   {"XX","XX","XX","XX","XX","XX","XX","XX"},
@@ -56,11 +57,16 @@ func getMove() {
 func makeMove() {
 	// WIP
 }
-func prettyPrintBoard(theBoard string[8][8]) {
+func prettyPrintBoard(theBoard [8][8]string) {
 	fmt.Println("---------")
-	for i:=1; i<=8; i++ {
-		for j:=1; j<=8; j++ {
-			fmt.Print("|")
+	for i:=0; i<=7; i++ {
+		for j:=0; j<=7; j++ {
+			if theBoard[i][j] == "XX" {
+				fmt.Print(" x ")
+			}
+			if j==7 {
+				fmt.Println()
+			}
 		}
 	}
 }
