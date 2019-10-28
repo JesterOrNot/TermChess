@@ -64,7 +64,7 @@ func getMove() [4]int {
 	fmt.Scan(&targetX)
 	fmt.Print("What is the target Y position?: ")
 	fmt.Scan(&targetY)
-	var theArray = [4]int{currentX,currentY,targetX,targetY}
+	var theArray = [4]int{currentX-1,currentY-1,targetX-1,targetY-1}
 	return theArray
 }
 func makeMove(board [8][8]string) [8][8]string {
