@@ -7,25 +7,6 @@ import (
 	"os/exec"
 )
 
-type King struct {
-	// WIP
-}
-type Queen struct {
-	// WIP
-}
-type Pawn struct {
-	// WIP
-}
-type Rook struct {
-	// WIP
-}
-type Knight struct {
-	// WIP
-}
-type Bishop struct {
-	// WIP
-}
-
 func main() {
 	var theBoard [8][8]string = newBoard()
 	for true {
@@ -84,7 +65,7 @@ func makeMove(board [8][8]string) [8][8]string {
 			board[data[2]][data[3]] = temp
 			board[data[0]][data[1]] = "XX"
 		}
-	} else if target == "XX" && (temp == "BK" || temp=="WK") {
+	} else if target == "XX" && (temp == "BK" || temp == "WK") {
 		if (data[2] == data[0]+1) || (data[2] == data[0]+1 && data[3] == data[1]+1) || (data[3] == data[1]+1) || (data[3] == data[1]-1) || (data[2] == data[0]-1) || (data[2] == data[0]-1 && data[3] == data[1]+1) || (data[2] == data[0]+1 && data[3] == data[1]-1) || (data[2] == data[0]-1 && data[3] == data[1]-1) {
 			board[data[2]][data[3]] = temp
 			board[data[0]][data[1]] = "XX"
