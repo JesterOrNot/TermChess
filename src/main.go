@@ -67,6 +67,26 @@ func prettyPrintBoard(theBoard [8][8]string) {
 				executeCommand("./src/lib/bin/changeToRed")
 				fmt.Print(" R ")
 				executeCommand("./src/lib/bin/resetColor")
+			} else if theBoard[i][j] == "BN" {
+				executeCommand("./src/lib/bin/changeToRed")
+				fmt.Print(" N ")
+				executeCommand("./src/lib/bin/resetColor")
+			} else if theBoard[i][j] == "BB" {
+				executeCommand("./src/lib/bin/changeToRed")
+				fmt.Print(" B ")
+				executeCommand("./src/lib/bin/resetColor")
+			} else if theBoard[i][j] == "BK" {
+				executeCommand("./src/lib/bin/changeToRed")
+				fmt.Print(" K ")
+				executeCommand("./src/lib/bin/resetColor")
+			} else if theBoard[i][j] == "BQ" {
+				executeCommand("./src/lib/bin/changeToRed")
+				fmt.Print(" Q ")
+				executeCommand("./src/lib/bin/resetColor")
+			} else if theBoard[i][j] == "BP" {
+				executeCommand("./src/lib/bin/changeToRed")
+				fmt.Print(" P ")
+				executeCommand("./src/lib/bin/resetColor")
 			}
 			if j==7 {
 				fmt.Println()
