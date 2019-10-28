@@ -51,8 +51,12 @@ func executeCommand(theCommand string) {
 		log.Print(err)
 	}
 }
-func getMove() {
-	// WIP
+func getMove() [2]int {
+	var item1,item2 int
+	fmt.Scan(&item1)
+	fmt.Scan(&item1)
+	var theArray = [2]int{item1,item2}
+	return theArray
 }
 func makeMove() {
 	// WIP
