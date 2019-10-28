@@ -37,13 +37,13 @@ func mainMenu() {
 }
 func newBoard() [8][8]string {
 	var board = [8][8]string{{"BR","BN","BB","BQ","BK","BB","BN","BR"},
-						   {"BP","BP","BP","BP","BP","BP","BP","BP"},
-						   {"XX","XX","XX","XX","XX","XX","XX","XX"},
-						   {"XX","XX","XX","XX","XX","XX","XX","XX"},
-						   {"XX","XX","XX","XX","XX","XX","XX","XX"},
-						   {"XX","XX","XX","XX","XX","XX","XX","XX"},
-						   {"WP","WP","WP","WP","WP","WP","WP","WP"},
-						   {"WR","WN","WB","WQ","WK","WB","WN","WR"}}
+						     {"BP","BP","BP","BP","BP","BP","BP","BP"},
+						     {"XX","XX","XX","XX","XX","XX","XX","XX"},
+						     {"XX","XX","XX","XX","XX","XX","XX","XX"},
+						     {"XX","XX","XX","XX","XX","XX","XX","XX"},
+						     {"XX","XX","XX","XX","XX","XX","XX","XX"},
+						     {"WP","WP","WP","WP","WP","WP","WP","WP"},
+						     {"WR","WN","WB","WQ","WK","WB","WN","WR"}}
 	return board
 }
 func executeCommand(theCommand string) {
