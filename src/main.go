@@ -1,16 +1,9 @@
 package main
 import (
-  "log"
-  "os/exec"
+	"log"
+	"os/exec"
+	"fmt"
 )
-
-func execCommand() string {
-	output, err := exec.Command("ls", "-l").CombinedOutput()
-	if err != nil {
-		log.Print(err)
-	}
-	return string(output)
-}
 
 type King struct {
 	// WIP
@@ -32,7 +25,8 @@ type Bishop struct {
 }
 
 func main() {
-	// WIP
+	var theBoard [][]string = newBoard()
+	fmt.Print(theBoard)
 }
 func mainMenu() {
 	// WIP
@@ -48,12 +42,25 @@ func newBoard() [][]string {
 						   {"WR","WN","WB","WQ","WK","WB","WN","WR"}}
 	return board
 }
+func executeCommand(theCommand string) {
+	cmd := exec.Command(theCommand)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	if err := cmd.Run(); err != nil {
+		log.Print(err)
+	}
+}
 func getMove() {
 	// WIP
 }
 func makeMove() {
 	// WIP
 }
-func prettyPrintBoard() {
-	// WIP
+func prettyPrintBoard(theBoard string[8][8]) {
+	fmt.Println("---------")
+	for i:=1; i<=8; i++ {
+		for j:=1; j<=8; j++ {
+			fmt.Print("|")
+		}
+	}
 }
