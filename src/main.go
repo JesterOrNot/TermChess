@@ -147,6 +147,7 @@
   				executeCommand("./src/lib/bin/resetColor")
   			}
   			if j==7 {
+				fmt.Print("|")
   				fmt.Println()
   			}
 		  }
