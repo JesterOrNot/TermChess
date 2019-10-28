@@ -82,10 +82,17 @@
    	    if data[2] == data[0]+1 && data[3] == data[1] {
     	    board[data[2]][data[3]] = temp
     	    board[data[0]][data[1]] = "XX"
-  	    } else {
-              fmt.Println("Invalid move")
-        }
-  	}
+  	    }
+  	} else if target == "XX" && temp == "BK" {
+			if (data[2] == data[0]+1) || (data[2] == data[0]+1 && data[3] == data[1]+1) {
+				board[data[2]][data[3]] = temp
+				board[data[0]][data[1]] = "XX"
+			} else {
+				fmt.Println("Invalid move")
+			}
+	} else {
+        fmt.Println("Invalid move")
+    }
   	return board
   }
   func prettyPrintBoard(theBoard [8][8]string) {
