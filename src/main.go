@@ -89,7 +89,7 @@
   	return board
   }
   func prettyPrintBoard(theBoard [8][8]string) {
-  	fmt.Println("---------")
+  	fmt.Println(" -----------------------")
   	for i:=0; i<=7; i++ {
   		for j:=0; j<=7; j++ {
   			if theBoard[i][j] == "XX" {
@@ -146,6 +146,7 @@
   			if j==7 {
   				fmt.Println()
   			}
-  		}
-  	}
+		  }
+	  }
+	  fmt.Println(" -----------------------")
   }
