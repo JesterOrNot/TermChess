@@ -28,6 +28,7 @@ type Bishop struct {
 func main() {
 	var theBoard [8][8]string = newBoard()
 	prettyPrintBoard(theBoard)
+	getMove()
 }
 func mainMenu() {
 	// WIP
@@ -65,7 +66,8 @@ func getMove() [4]int {
 	return theArray
 }
 func makeMove() {
-	// WIP
+	var data = getMove()
+	fmt.Println(data)
 }
 func prettyPrintBoard(theBoard [8][8]string) {
 	fmt.Println("---------")
