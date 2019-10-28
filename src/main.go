@@ -27,9 +27,10 @@ type Bishop struct {
 
 func main() {
 	var theBoard [8][8]string = newBoard()
-	prettyPrintBoard(theBoard)
-	var board [8][8]string = makeMove(theBoard)
-	prettyPrintBoard(board)
+	for true {
+		prettyPrintBoard(theBoard)
+		theBoard = makeMove(theBoard)
+	}
 }
 func mainMenu() {
 	// WIP
