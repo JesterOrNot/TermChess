@@ -69,12 +69,13 @@
   }
   func makeMove(board [8][8]string) [8][8]string {
   	var data = getMove()
+	var target = board[data[2]][data[3]]
   	var temp = board[data[0]][data[1]]
-  	if board[data[2]][data[3]] == "XX" && temp == "WP" {
-  	  if data[2] == data[0+1] || data[2] == data[0+2] {
-    		board[data[2]][data[3]] = temp
-    		board[data[0]][data[1]] = "XX"
-  	  }
+  	if target == "XX" && temp == "WP" {
+   	    if data[2] == data[0]-1 && data[3] == data[1] {
+    	    board[data[2]][data[3]] = temp
+    	    board[data[0]][data[1]] = "XX"
+  	    }
   	}
   	return board
   }
