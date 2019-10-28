@@ -51,11 +51,17 @@ func executeCommand(theCommand string) {
 		log.Print(err)
 	}
 }
-func getMove() [2]int {
-	var item1,item2 int
-	fmt.Scan(&item1)
-	fmt.Scan(&item1)
-	var theArray = [2]int{item1,item2}
+func getMove() [4]int {
+	var currentX,currentY,targetX,targetY int
+	fmt.Print("What is the current X position?: ")
+	fmt.Scan(&currentX)
+	fmt.Print("What is the current Y position?: ")
+	fmt.Scan(&currentY)
+	fmt.Print("What is the target X position?: ")
+	fmt.Scan(&targetX)
+	fmt.Print("What is the target Y position?: ")
+	fmt.Scan(&targetY)
+	var theArray = [4]int{currentX,currentY,targetX,targetY}
 	return theArray
 }
 func makeMove() {
