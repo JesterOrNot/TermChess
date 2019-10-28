@@ -87,6 +87,30 @@ func prettyPrintBoard(theBoard [8][8]string) {
 				executeCommand("./src/lib/bin/changeToRed")
 				fmt.Print(" P ")
 				executeCommand("./src/lib/bin/resetColor")
+			} else if theBoard[i][j] == "WP" {
+				executeCommand("./src/lib/bin/changeToBlue")
+				fmt.Print(" P ")
+				executeCommand("./src/lib/bin/resetColor")
+			} else if theBoard[i][j] == "WR" {
+				executeCommand("./src/lib/bin/changeToBlue")
+				fmt.Print(" R ")
+				executeCommand("./src/lib/bin/resetColor")
+			} else if theBoard[i][j] == "WN" {
+				executeCommand("./src/lib/bin/changeToBlue")
+				fmt.Print(" N ")
+				executeCommand("./src/lib/bin/resetColor")
+			} else if theBoard[i][j] == "WB" {
+				executeCommand("./src/lib/bin/changeToBlue")
+				fmt.Print(" B ")
+				executeCommand("./src/lib/bin/resetColor")
+			} else if theBoard[i][j] == "WK" {
+				executeCommand("./src/lib/bin/changeToBlue")
+				fmt.Print(" K ")
+				executeCommand("./src/lib/bin/resetColor")
+			} else if theBoard[i][j] == "WQ" {
+				executeCommand("./src/lib/bin/changeToBlue")
+				fmt.Print(" Q ")
+				executeCommand("./src/lib/bin/resetColor")
 			}
 			if j==7 {
 				fmt.Println()
