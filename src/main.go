@@ -78,7 +78,7 @@ func makeMove(board [8][8]string) [8][8]string {
 	return board
 }
 func prettyPrintBoard(theBoard [8][8]string) {
-	fmt.Print("   1  2  3  4  5  6  7  8\n")
+	fmt.Println("   1  2  3  4  5  6  7  8")
 	fmt.Println("  ________________________")
 	var count = 1
 	for i := 0; i <= 7; i++ {
