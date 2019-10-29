@@ -141,5 +141,4 @@ func prettyPrintBoard(theBoard [8][8]string) {
 			}
 		}
 	}
-	fmt.Println("  ________________________")
 }
