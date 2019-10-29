@@ -1,6 +1,7 @@
 package main
 
 import (
+	"strings"
 	"fmt"
 	"log"
 	"os"
@@ -72,7 +73,7 @@ func makeMove(board [8][8]string) [8][8]string {
 		} else {
 			fmt.Println("Invalid move")
 		}
-	} else if target == "XX" && (temp == "BN" || temp == "WN") {
+	} else if (target == "XX" || strings.HasPrefix(target,"B")) && (temp == "BN" || temp == "WN") {
 		if (data[2] == data[0]+2 && data[3] == data[1]+1) || (data[2] == data[0]+2 && data[3] == data[1]-1) || (data[2] == data[0]-2 && data[3] == data[1]-1) || (data[2] == data[0]-2 && data[3] == data[1]+1) || (data[2] == data[0]+1 && data[3] == data[1]-2) || (data[2] == data[0]-1 && data[3] == data[1]-2) || (data[2] == data[0]+1 && data[3] == data[1]+2) || (data[2] == data[0]-1 && data[3] == data[1]+2) {
 			board[data[2]][data[3]] = temp
 			board[data[0]][data[1]] = "XX"
