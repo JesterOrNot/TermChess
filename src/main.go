@@ -89,10 +89,10 @@ func makeMove(board [8][8]string) [8][8]string {
 func prettyPrintBoard(theBoard [8][8]string) {
 	executeCommand("clear")
 	fmt.Println("   1  2  3  4  5  6  7  8")
-	fmt.Println("  ________________________")
+	fmt.Println(" ╭━━━━━━━━━━━━━━━━━━━━━━━╮")
 	var count = 1
 	for i := 0; i <= 7; i++ {
-		fmt.Print(count, "|")
+		fmt.Print(count, "│")
 		count++
 		for j := 0; j <= 7; j++ {
 			if theBoard[i][j] == "XX" {
@@ -123,9 +123,11 @@ func prettyPrintBoard(theBoard [8][8]string) {
 				color.FgCyan.Print(" Q ")
 			}
 			if j == 7 {
-				fmt.Print("|")
+				fmt.Print("│ ", count-1)
 				fmt.Println()
 			}
 		}
 	}
+	fmt.Println(" ╰━━━━━━━━━━━━━━━━━━━━━━━╯")
+	fmt.Println("   1  2  3  4  5  6  7  8")
 }
