@@ -51,6 +51,54 @@ func getMove() [4]int {
 	var theArray = [4]int{currentY - 1, currentX - 1, targetY - 1, targetX - 1}
 	return theArray
 }
+func getBishopMoves(board [8][8]string, currentPos [2]int) [][]int {
+	var availableMoves [][]int
+	for i := 1; i < 7; i++ {
+		if currentPos[0]+i > 7 || currentPos[1]+i > 7 {
+			break
+		}
+		if board[currentPos[0]+i][currentPos[1]+i] != "XX" {
+			availableMoves = append(availableMoves, []int{currentPos[0] + i, currentPos[1] + i})
+			break
+		} else {
+			availableMoves = append(availableMoves, []int{currentPos[0] + i, currentPos[1] + i})
+		}
+	}
+	for i := 1; i < 7; i++ {
+		if currentPos[0]+i > 7 || currentPos[1]-i < 0 {
+			break
+		}
+		if board[currentPos[0]+i][currentPos[1]-i] != "XX" {
+			availableMoves = append(availableMoves, []int{currentPos[0] + i, currentPos[1] - i})
+			break
+		} else {
+			availableMoves = append(availableMoves, []int{currentPos[0] + i, currentPos[1] - i})
+		}
+	}
+	for i := 1; i < 7; i++ {
+		if currentPos[0]-i < 0 || currentPos[1]-i < 0 {
+			break
+		}
+		if board[currentPos[0]-i][currentPos[1]-i] != "XX" {
+			availableMoves = append(availableMoves, []int{currentPos[0] - i, currentPos[1] - i})
+			break
+		} else {
+			availableMoves = append(availableMoves, []int{currentPos[0] - i, currentPos[1] - i})
+		}
+	}
+	for i := 1; i < 7; i++ {
+		if currentPos[0]-i < 0 || currentPos[1]+i > 7 {
+			break
+		}
+		if board[currentPos[0]-i][currentPos[1]+i] != "XX" {
+			availableMoves = append(availableMoves, []int{currentPos[0] - i, currentPos[1] + i})
+			break
+		} else {
+			availableMoves = append(availableMoves, []int{currentPos[0] - i, currentPos[1] + i})
+		}
+	}
+	return availableMoves
+}
 func makeMove(board [8][8]string) [8][8]string {
 	var data = getMove()
 	var target = board[data[2]][data[3]]
@@ -87,7 +135,8 @@ func makeMove(board [8][8]string) [8][8]string {
 	return board
 }
 func prettyPrintBoard(theBoard [8][8]string) {
-	executeCommand("clear")
+	fmt.Println(getBishopMoves(theBoard, [2]int{4, 5}),len(getBishopMoves(theBoard, [2]int{4, 5})))
+	// executeCommand("clear")
 	fmt.Println("   1  2  3  4  5  6  7  8")
 	fmt.Println(" ╭━━━━━━━━━━━━━━━━━━━━━━━╮")
 	var count = 1
