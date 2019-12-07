@@ -2,6 +2,7 @@ package main
 
 import (
 	"strings"
+	"github.com/gookit/color"
 	"fmt"
 	"log"
 	"os"
@@ -96,53 +97,29 @@ func prettyPrintBoard(theBoard [8][8]string) {
 			if theBoard[i][j] == "XX" {
 				fmt.Print(" x ")
 			} else if theBoard[i][j] == "BR" {
-				executeCommand("./src/lib/bin/changeToRed")
-				fmt.Print(" R ")
-				executeCommand("./src/lib/bin/resetColor")
+				color.FgRed.Print(" R ")
 			} else if theBoard[i][j] == "BN" {
-				executeCommand("./src/lib/bin/changeToRed")
-				fmt.Print(" N ")
-				executeCommand("./src/lib/bin/resetColor")
+				color.FgRed.Print(" N ")
 			} else if theBoard[i][j] == "BB" {
-				executeCommand("./src/lib/bin/changeToRed")
-				fmt.Print(" B ")
-				executeCommand("./src/lib/bin/resetColor")
+				color.FgRed.Print(" B ")
 			} else if theBoard[i][j] == "BK" {
-				executeCommand("./src/lib/bin/changeToRed")
-				fmt.Print(" K ")
-				executeCommand("./src/lib/bin/resetColor")
+				color.FgRed.Print(" K ")
 			} else if theBoard[i][j] == "BQ" {
-				executeCommand("./src/lib/bin/changeToRed")
-				fmt.Print(" Q ")
-				executeCommand("./src/lib/bin/resetColor")
+				color.FgRed.Print(" Q ")
 			} else if theBoard[i][j] == "BP" {
-				executeCommand("./src/lib/bin/changeToRed")
-				fmt.Print(" P ")
-				executeCommand("./src/lib/bin/resetColor")
+				color.FgRed.Print(" P ")
 			} else if theBoard[i][j] == "WP" {
-				executeCommand("./src/lib/bin/changeToBlue")
-				fmt.Print(" P ")
-				executeCommand("./src/lib/bin/resetColor")
+				color.FgCyan.Print(" P ")
 			} else if theBoard[i][j] == "WR" {
-				executeCommand("./src/lib/bin/changeToBlue")
-				fmt.Print(" R ")
-				executeCommand("./src/lib/bin/resetColor")
+				color.FgCyan.Print(" R ")
 			} else if theBoard[i][j] == "WN" {
-				executeCommand("./src/lib/bin/changeToBlue")
-				fmt.Print(" N ")
-				executeCommand("./src/lib/bin/resetColor")
+				color.FgCyan.Print(" N ")
 			} else if theBoard[i][j] == "WB" {
-				executeCommand("./src/lib/bin/changeToBlue")
-				fmt.Print(" B ")
-				executeCommand("./src/lib/bin/resetColor")
+				color.FgCyan.Print(" B ")
 			} else if theBoard[i][j] == "WK" {
-				executeCommand("./src/lib/bin/changeToBlue")
-				fmt.Print(" K ")
-				executeCommand("./src/lib/bin/resetColor")
+				color.FgCyan.Print(" K ")
 			} else if theBoard[i][j] == "WQ" {
-				executeCommand("./src/lib/bin/changeToBlue")
-				fmt.Print(" Q ")
-				executeCommand("./src/lib/bin/resetColor")
+				color.FgCyan.Print(" Q ")
 			}
 			if j == 7 {
 				fmt.Print("|")
