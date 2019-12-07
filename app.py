@@ -63,6 +63,7 @@ def pretty_print(board):
             count1 += 1
     print(" ╰━━━━━━━━━━━━━━━━━━━━━╯")
 
+
 def new_board():
     return [["BR", "BN", "BB", "BQ", "BK", "BB", "BN", "BR"],
             ["BP", "BP", "BP", "BP", "BP", "BP", "BP", "BP"],
@@ -72,6 +73,14 @@ def new_board():
             ["XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"],
             ["WP", "WP", "WP", "WP", "WP", "WP", "WP", "WP"],
             ["WR", "WN", "WB", "WQ", "WK", "WB", "WN", "WR"]]
+
+
+def get_bishop_moves(board, current_pos):
+    # WIP
+
+
+def make_move(board):
+    # WIP
 
 
 if __name__ == "__main__":
