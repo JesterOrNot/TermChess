@@ -53,11 +53,12 @@ func getMove() [4]int {
 }
 func getBishopMoves(board [8][8]string, currentPos [2]int) [][]int {
 	var availableMoves [][]int
+	availableMoves = append(availableMoves, []int{currentPos[0], currentPos[1]})
 	for i := 1; i < 7; i++ {
 		if currentPos[0]+i > 7 || currentPos[1]+i > 7 {
+			availableMoves = append(availableMoves, []int{currentPos[0] + i, currentPos[1] - i})
 			break
-		}
-		if board[currentPos[0]+i][currentPos[1]+i] != "XX" {
+		} else if board[currentPos[0]+i][currentPos[1]+i] != "XX" {
 			availableMoves = append(availableMoves, []int{currentPos[0] + i, currentPos[1] + i})
 			break
 		} else {
@@ -66,9 +67,9 @@ func getBishopMoves(board [8][8]string, currentPos [2]int) [][]int {
 	}
 	for i := 1; i < 7; i++ {
 		if currentPos[0]+i > 7 || currentPos[1]-i < 0 {
+			availableMoves = append(availableMoves, []int{currentPos[0] + i, currentPos[1] - i})
 			break
-		}
-		if board[currentPos[0]+i][currentPos[1]-i] != "XX" {
+		} else if board[currentPos[0]+i][currentPos[1]-i] != "XX" {
 			availableMoves = append(availableMoves, []int{currentPos[0] + i, currentPos[1] - i})
 			break
 		} else {
@@ -78,8 +79,7 @@ func getBishopMoves(board [8][8]string, currentPos [2]int) [][]int {
 	for i := 1; i < 7; i++ {
 		if currentPos[0]-i < 0 || currentPos[1]-i < 0 {
 			break
-		}
-		if board[currentPos[0]-i][currentPos[1]-i] != "XX" {
+		} else if board[currentPos[0]-i][currentPos[1]-i] != "XX" {
 			availableMoves = append(availableMoves, []int{currentPos[0] - i, currentPos[1] - i})
 			break
 		} else {
@@ -89,8 +89,7 @@ func getBishopMoves(board [8][8]string, currentPos [2]int) [][]int {
 	for i := 1; i < 7; i++ {
 		if currentPos[0]-i < 0 || currentPos[1]+i > 7 {
 			break
-		}
-		if board[currentPos[0]-i][currentPos[1]+i] != "XX" {
+		} else if board[currentPos[0]-i][currentPos[1]+i] != "XX" {
 			availableMoves = append(availableMoves, []int{currentPos[0] - i, currentPos[1] + i})
 			break
 		} else {
@@ -135,7 +134,7 @@ func makeMove(board [8][8]string) [8][8]string {
 	return board
 }
 func prettyPrintBoard(theBoard [8][8]string) {
-	fmt.Println(getBishopMoves(theBoard, [2]int{4, 5}),len(getBishopMoves(theBoard, [2]int{4, 5})))
+	fmt.Println(getBishopMoves(theBoard, [2]int{4, 5}), len(getBishopMoves(theBoard, [2]int{4, 5})))
 	// executeCommand("clear")
 	fmt.Println("   1  2  3  4  5  6  7  8")
 	fmt.Println(" ╭━━━━━━━━━━━━━━━━━━━━━━━╮")
