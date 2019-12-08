@@ -79,13 +79,41 @@ def new_board():
 def get_bishop_moves(board, current_pos):
     available_moves = []
     count1 = 1
-    for i in range(7):
-        if current_pos[0]+count1 > 7 or current_pos[1] + count1 > 7:
+    for i in range(8):
+        if current_pos[0]+i > 7 or current_pos[1]+i > 7:
+            available_moves += (available_moves, [current_pos[0] + i, current_pos[1] + i])
             break
         elif board[current_pos[0]+i][current_pos[1]+i] != "XX":
-            availableMoves = [current_pos[0] + count1, current_pos[1] + count1]
+            available_moves += (available_moves, [current_pos[0] + i, current_pos[1] + i])
             break
-        count1 += 1
+        else:
+            available_moves += (available_moves, [current_pos[0] + i, current_pos[1] + i])
+    for i in range(8):
+        if current_pos[0]+i > 7 or current_pos[1]-i < 0:
+            available_moves += (available_moves, [current_pos[0] + i, current_pos[1] - i])
+            break
+        elif board[current_pos[0]+i][current_pos[1]-i] != "XX":
+            available_moves += (available_moves, [current_pos[0] + i, current_pos[1] - i])
+            break
+        else:
+            available_moves += (available_moves, [current_pos[0] + i, current_pos[1] - i])
+    for i in range(8):
+        if current_pos[0]-i < 0 or current_pos[1]-i < 0:
+            break
+        elif board[current_pos[0]-i][current_pos[1]-i] != "XX":
+            available_moves += (available_moves, [current_pos[0] - i, current_pos[1] - i])
+            break
+        else:
+            available_moves += (available_moves, [current_pos[0] - i, current_pos[1] - i])
+    for i in range(8):
+        if current_pos[0]-i < 0 or current_pos[1]+i > 7:
+            break
+        elif board[current_pos[0]-i][current_pos[1]+i] != "XX":
+            available_moves += (available_moves, [current_pos[0] - i, current_pos[1] + i])
+            break
+        else:
+            available_moves += (available_moves, [current_pos[0] - i, current_pos[1] + i])
+    return available_moves
 
 
 def make_move(board):
