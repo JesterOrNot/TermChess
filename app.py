@@ -4,21 +4,21 @@ import colorama
 def get_move():
     current_x = int(input("What is the current x position?: "))
     current_y = int(input("What is the current y position?: "))
-    target_x = int(input("What is the target x position"))
-    target_y = int(input("What is the target y position"))
+    target_x = int(input("What is the target x position?: "))
+    target_y = int(input("What is the target y position?: "))
     return current_x-1, current_y-1, target_x-1, target_y-1
 
 
-def pretty_print(board):
+def pretty_print(board: list):
     print("   1  2  3  4  5  6  7  8")
-    print(" ╭━━━━━━━━━━━━━━━━━━━━━╮")
+    print(" ╭━━━━━━━━━━━━━━━━━━━━━━━━╮")
     count = 1
     count1 = 0
-    for colum in range(7):
+    for colum in range(8):
         count1 = 0
         print(str(count) + "│", end="")
         count += 1
-        for row in range(7):
+        for row in range(8):
             if board[colum][row] == "XX":
                 print(" x ", end="")
             elif board[colum][row] == "BR":
@@ -57,11 +57,12 @@ def pretty_print(board):
             elif board[colum][row] == "WQ":
                 print(colorama.Fore.CYAN + " Q " +
                       colorama.Style.RESET_ALL, end="")
-            if count1 == 6:
+            if count1 == 7:
                 print("│ " + str(count-1), end="")
                 print()
             count1 += 1
-    print(" ╰━━━━━━━━━━━━━━━━━━━━━╯")
+    print(" ╰━━━━━━━━━━━━━━━━━━━━━━━━╯")
+    print("  1  2  3  4  5  6  7  8")
 
 
 def new_board():
@@ -76,12 +77,57 @@ def new_board():
 
 
 def get_bishop_moves(board, current_pos):
-    # WIP
+    available_moves = []
+    count1 = 1
+    for i in range(7):
+        if current_pos[0]+count1 > 7 or current_pos[1] + count1 > 7:
+            break
+        elif board[current_pos[0]+i][current_pos[1]+i] != "XX":
+            availableMoves = [current_pos[0] + count1, current_pos[1] + count1]
+            break
+        count1 += 1
 
 
 def make_move(board):
-    # WIP
-
-
+    data = get_move()
+    target = board[data[2]][data[3]]
+    temp = board
+    if target == "XX" and temp == "WP":
+        if data[2] == data[0]-1 and data[3] == data[1]:
+            board[data[2]][data[3]] = temp
+            board[data[0]][data[1]] = "XX"
+        else:
+            print("Invalid move")
+    elif target == "XX" and temp == "BP":
+        if data[2] == data[0]+1 and data[3] == data[1]:
+            board[data[2]][data[3]] = temp
+            board[data[0]][data[1]] = "XX"
+    elif target == "XX" and (temp == "BK" or temp == "WK"):
+        if data[2] == data[0]+1 or data[2] == data[0]+1 and data[3] == data[1]+1 or data[3] == data[1]+1 or data[3] == data[1]-1 or data[2] == data[0]-1 or data[2] == data[0]-1 and data[3] == data[1]+1 or data[2] == data[0]+1 and data[3] == data[1]-1 or data[2] == data[0]-1 and data[3] == data[1]-1:
+            board[data[2]][data[3]] = temp
+            board[data[0]][data[1]] = "XX"
+        else:
+            print("Invalid move")
+    elif target == "XX" or target.startswith("B") and (temp == "BN" or temp == "WN"):
+        if (data[2] == data[0]+2 and data[3] == data[1]+1) or (data[2] == data[0]+2 and data[3] == data[1]-1) or (data[2] == data[0]-2 and data[3] == data[1]-1) or (data[2] == data[0]-2 and data[3] == data[1]+1) or (data[2] == data[0]+1 and data[3] == data[1]-2) or (data[2] == data[0]-1 and data[3] == data[1]-2) or (data[2] == data[0]+1 and data[3] == data[1]+2) or (data[2] == data[0]-1 and data[3] == data[1]+2):
+            board[data[2]][data[3]] = temp
+            board[data[0]][data[1]] = "XX"
+        else:
+            print("Invalid move")
+    elif temp == "BB" or temp == "WB":
+        bishopMoves = get_bishop_moves(board, [data[1],data[0]])
+        print(bishopMoves)
+        for i in range (len(bishopMoves[0])):
+            for j in range (len(bishopMoves[1])):
+                if bishopMoves[i][j] == target:
+                    board[data[2]][data[3]] = temp
+                    board[data[0]][data[1]] = "XX"
+    else:
+        print("Invalid move")
+    return board
 if __name__ == "__main__":
-    print(pretty_print(new_board()))
+    board = new_board()
+    while True:
+        pretty_print(board)
+        get_move()
+        # board = make_move(board)
