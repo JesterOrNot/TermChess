@@ -62,7 +62,7 @@ def pretty_print(board: list):
                 print()
             count1 += 1
     print(" ╰━━━━━━━━━━━━━━━━━━━━━━━━╯")
-    print("  1  2  3  4  5  6  7  8")
+    print("   1  2  3  4  5  6  7  8")
 
 
 def new_board():
@@ -79,40 +79,34 @@ def new_board():
 def get_bishop_moves(board, current_pos):
     available_moves = []
     count1 = 1
-    for i in range(8):
+    for i in range(7):
         if current_pos[0]+i > 7 or current_pos[1]+i > 7:
-            available_moves += (available_moves, [current_pos[0] + i, current_pos[1] + i])
             break
         elif board[current_pos[0]+i][current_pos[1]+i] != "XX":
-            available_moves += (available_moves, [current_pos[0] + i, current_pos[1] + i])
             break
         else:
-            available_moves += (available_moves, [current_pos[0] + i, current_pos[1] + i])
+            available_moves += [current_pos[0] + i, current_pos[1] + i]
     for i in range(8):
         if current_pos[0]+i > 7 or current_pos[1]-i < 0:
-            available_moves += (available_moves, [current_pos[0] + i, current_pos[1] - i])
             break
         elif board[current_pos[0]+i][current_pos[1]-i] != "XX":
-            available_moves += (available_moves, [current_pos[0] + i, current_pos[1] - i])
             break
         else:
-            available_moves += (available_moves, [current_pos[0] + i, current_pos[1] - i])
+            available_moves += [current_pos[0] + i, current_pos[1] - i]
     for i in range(8):
         if current_pos[0]-i < 0 or current_pos[1]-i < 0:
             break
         elif board[current_pos[0]-i][current_pos[1]-i] != "XX":
-            available_moves += (available_moves, [current_pos[0] - i, current_pos[1] - i])
             break
         else:
-            available_moves += (available_moves, [current_pos[0] - i, current_pos[1] - i])
+            available_moves += [current_pos[0] - i, current_pos[1] - i]
     for i in range(8):
         if current_pos[0]-i < 0 or current_pos[1]+i > 7:
             break
         elif board[current_pos[0]-i][current_pos[1]+i] != "XX":
-            available_moves += (available_moves, [current_pos[0] - i, current_pos[1] + i])
             break
         else:
-            available_moves += (available_moves, [current_pos[0] - i, current_pos[1] + i])
+            available_moves += [current_pos[0] - i, current_pos[1] + i]
     return available_moves
 
 
@@ -143,19 +137,19 @@ def make_move(board):
         else:
             print("Invalid move")
     elif temp == "BB" or temp == "WB":
-        bishopMoves = get_bishop_moves(board, [data[1],data[0]])
+        bishopMoves = get_bishop_moves(board, [data[0],data[1]])
         print(bishopMoves)
-        for i in range (len(bishopMoves[0])):
-            for j in range (len(bishopMoves[1])):
-                if bishopMoves[i][j] == target:
-                    board[data[2]][data[3]] = temp
-                    board[data[0]][data[1]] = "XX"
+        if target in bishopMoves:
+            board[data[2]][data[3]] = temp
+            board[data[0]][data[1]] = "XX"
     else:
         print("Invalid move")
     return board
 if __name__ == "__main__":
     board = new_board()
+    # pretty_print(board)
     while True:
         pretty_print(board)
         board = make_move(board)
-    pretty_print(board)
+        print(get_bishop_moves(board, [5, 5]))
+    # pretty_print(board)
