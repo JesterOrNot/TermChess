@@ -6,7 +6,7 @@ def get_move():
     current_y = int(input("What is the current y position?: "))
     target_x = int(input("What is the target x position?: "))
     target_y = int(input("What is the target y position?: "))
-    return current_x-1, current_y-1, target_x-1, target_y-1
+    return current_y-1, current_x-1, target_y-1, target_x-1
 
 
 def pretty_print(board: list):
@@ -91,7 +91,7 @@ def get_bishop_moves(board, current_pos):
 def make_move(board):
     data = get_move()
     target = board[data[2]][data[3]]
-    temp = board
+    temp = board[data[0]][data[1]]
     if target == "XX" and temp == "WP":
         if data[2] == data[0]-1 and data[3] == data[1]:
             board[data[2]][data[3]] = temp
@@ -129,5 +129,5 @@ if __name__ == "__main__":
     board = new_board()
     while True:
         pretty_print(board)
-        get_move()
-        # board = make_move(board)
+        board = make_move(board)
+    pretty_print(board)
