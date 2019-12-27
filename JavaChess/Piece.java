@@ -10,9 +10,9 @@ public abstract class Piece {
 
     // Abstract Methods
 
-    public abstract Board makeMove();
+    public abstract Board makeMove(Board theBoard);
 
-    public abstract int[][] getLegalMoves();
+    public abstract int[][] getLegalMoves(Board theBoard);
  
     // Constructors
 

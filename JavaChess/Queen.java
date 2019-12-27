@@ -11,12 +11,12 @@ public class Queen extends Piece {
     }
 
     @Override
-    public Board makeMove() {
+    public Board makeMove(Board thebBoard) {
         return null;
     }
 
     @Override
-    public int[][] getLegalMoves() {
+    public int[][] getLegalMoves(Board thebBoard) {
         return null;
     }
 

@@ -11,12 +11,12 @@ public class Knight extends Piece {
     }
 
     @Override
-    public Board makeMove() {
+    public Board makeMove(Board theBoard) {
         return null;
     }
 
     @Override
-    public int[][] getLegalMoves() {
+    public int[][] getLegalMoves(Board theBoard) {
         return null;
     }
 
