@@ -8,17 +8,28 @@ public abstract class Piece {
 
     private boolean isWhite;
 
+    private boolean isAlive;
+
     // Abstract Methods
 
     public abstract Board makeMove(Board theBoard);
 
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean isAlive) {
+        this.isAlive = isAlive;
+    }
+
     public abstract int[][] getLegalMoves(Board theBoard);
- 
+
     // Constructors
 
     public Piece(int value, boolean isWhite) {
         this.value = value;
         this.setIsWhite(isWhite);
+        this.setAlive(true);
     }
 
     // Getters
