@@ -10,8 +10,10 @@ public abstract class Piece {
 
     // Abstract Methods
 
-    public abstract void move();
+    public abstract Board makeMove();
 
+    public abstract int[][] getLegalMoves();
+ 
     // Constructors
 
     public Piece(int value, boolean isWhite) {
