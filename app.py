@@ -1,4 +1,10 @@
 import colorama
+from itertools import islice
+
+
+def chunk(it, size):
+    it = iter(it)
+    return iter(lambda: tuple(islice(it, size)), ())
 
 
 def get_current_x():
@@ -138,36 +144,47 @@ def new_board():
 
 def get_bishop_moves(board, current_pos):
     available_moves = []
-    count1 = 1
-    for i in range(7):
+    count = 0
+    team = (board[current_pos[0]][current_pos[1]])[0]
+    print(team)
+    for i in range(1, 8):
         if current_pos[0]+i > 7 or current_pos[1]+i > 7:
             break
-        elif board[current_pos[0]+i][current_pos[1]+i] != "XX":
+        elif board[current_pos[0]+i][current_pos[1]+i] != "XX" and (board[current_pos[0]+i][current_pos[1]+i])[0] != team:
+            if count == 0:
+                count += 1
+                available_moves += [current_pos[0] + i, current_pos[1] + i]
+                count = 0    
             break
         else:
             available_moves += [current_pos[0] + i, current_pos[1] + i]
-    for i in range(8):
+    for i in range(1, 8):
         if current_pos[0]+i > 7 or current_pos[1]-i < 0:
             break
-        elif board[current_pos[0]+i][current_pos[1]-i] != "XX":
+        elif board[current_pos[0]+i][current_pos[1]-i] != "XX" and (board[current_pos[0]+i][current_pos[1]-i])[0] != team:
+            if count == 0:
+                count += 1
+                available_moves += [current_pos[0] + i, current_pos[1] - i]
+                count = 0
             break
         else:
             available_moves += [current_pos[0] + i, current_pos[1] - i]
-    for i in range(8):
+    for i in range(1, 8):
         if current_pos[0]-i < 0 or current_pos[1]-i < 0:
             break
-        elif board[current_pos[0]-i][current_pos[1]-i] != "XX":
+        elif board[current_pos[0]-i][current_pos[1]-i] != "XX" and (board[current_pos[0]-i][current_pos[1]-i])[0] != team:
             break
         else:
             available_moves += [current_pos[0] - i, current_pos[1] - i]
-    for i in range(8):
+    for i in range(1, 8):
         if current_pos[0]-i < 0 or current_pos[1]+i > 7:
             break
-        elif board[current_pos[0]-i][current_pos[1]+i] != "XX":
+        elif board[current_pos[0]-i][current_pos[1]+i] != "XX" and (board[current_pos[0]-i][current_pos[1]+i])[0] != team:
             break
         else:
             available_moves += [current_pos[0] - i, current_pos[1] + i]
-    return available_moves
+    return list(set(chunk(available_moves, 2)))
+
 
 
 def make_move(board):
