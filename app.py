@@ -1,11 +1,71 @@
 import colorama
 
 
+def get_current_x():
+    try:
+        current_x = int(input("What is the current x position?: "))
+    except Exception:
+        print("Invalid Input")
+        current_x = get_current_x()
+
+    return current_x
+
+
+def get_current_y():
+    try:
+        current_y = int(input("What is the current y position?: "))
+    except Exception:
+        print("Invalid Input")
+        current_y = get_current_y()
+
+    return current_y
+
+
+def get_target_x():
+    try:
+        target_x = int(input("What is the target x position?: "))
+    except Exception:
+        print("Invalid Input")
+        target_x = get_target_x()
+
+    return target_x
+
+
+def get_target_y():
+    try:
+        target_y = int(input("What is the target y position?: "))
+    except Exception:
+        print("Invalid Input")
+        target_y = get_target_y()
+
+    return target_y
+
+
 def get_move():
-    current_x = int(input("What is the current x position?: "))
-    current_y = int(input("What is the current y position?: "))
-    target_x = int(input("What is the target x position?: "))
-    target_y = int(input("What is the target y position?: "))
+    try:
+        current_x = get_current_x()
+    except Exception:
+        print("Invalid Input")
+        current_x = get_current_x()
+    print()
+    try:
+        current_y = get_current_y()
+    except Exception:
+        print("Invalid Input")
+        current_y = get_current_y()
+    print()
+    try:
+        target_x = get_target_x()
+    except Exception:
+        print("Invalid Input")
+        target_x = get_target_x()
+    print()
+    try:
+        target_y = get_target_y()
+    except Exception:
+        print("Invalid Input")
+        target_y = get_target_y()
+    print()
     return current_y-1, current_x-1, target_y-1, target_x-1
 
 
