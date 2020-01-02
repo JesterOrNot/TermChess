@@ -22,40 +22,40 @@ def pretty_print(board: list):
             if board[colum][row] == "XX":
                 print(" x ", end="")
             elif board[colum][row] == "BR":
-                print(colorama.Fore.RED + " R " +
+                print(colorama.Fore.RED + " ♜ " +
                       colorama.Style.RESET_ALL, end="")
             elif board[colum][row] == "BN":
-                print(colorama.Fore.RED + " N " +
+                print(colorama.Fore.RED + " ♞ " +
                       colorama.Style.RESET_ALL, end="")
             elif board[colum][row] == "BB":
-                print(colorama.Fore.RED + " B " +
+                print(colorama.Fore.RED + " ♝ " +
                       colorama.Style.RESET_ALL, end="")
             elif board[colum][row] == "BK":
-                print(colorama.Fore.RED + " K " +
+                print(colorama.Fore.RED + " ♚ " +
                       colorama.Style.RESET_ALL, end="")
             elif board[colum][row] == "BQ":
-                print(colorama.Fore.RED + " Q " +
+                print(colorama.Fore.RED + " ♛ " +
                       colorama.Style.RESET_ALL, end="")
             elif board[colum][row] == "BP":
-                print(colorama.Fore.RED + " P " +
+                print(colorama.Fore.RED + " ♙ " +
                       colorama.Style.RESET_ALL, end="")
             elif board[colum][row] == "WP":
-                print(colorama.Fore.CYAN + " P " +
+                print(colorama.Fore.CYAN + " ♙ " +
                       colorama.Style.RESET_ALL, end="")
             elif board[colum][row] == "WR":
-                print(colorama.Fore.CYAN + " R " +
+                print(colorama.Fore.CYAN + " ♖ " +
                       colorama.Style.RESET_ALL, end="")
             elif board[colum][row] == "WN":
-                print(colorama.Fore.CYAN + " N " +
+                print(colorama.Fore.CYAN + " ♘ " +
                       colorama.Style.RESET_ALL, end="")
             elif board[colum][row] == "WB":
-                print(colorama.Fore.CYAN + " B " +
+                print(colorama.Fore.CYAN + " ♗ " +
                       colorama.Style.RESET_ALL, end="")
             elif board[colum][row] == "WK":
-                print(colorama.Fore.CYAN + " K " +
+                print(colorama.Fore.CYAN + " ♔ " +
                       colorama.Style.RESET_ALL, end="")
             elif board[colum][row] == "WQ":
-                print(colorama.Fore.CYAN + " Q " +
+                print(colorama.Fore.CYAN + " ♕ " +
                       colorama.Style.RESET_ALL, end="")
             if count1 == 7:
                 print("│ " + str(count-1), end="")
@@ -137,7 +137,7 @@ def make_move(board):
         else:
             print("Invalid move")
     elif temp == "BB" or temp == "WB":
-        bishopMoves = get_bishop_moves(board, [data[0],data[1]])
+        bishopMoves = get_bishop_moves(board, [data[0], data[1]])
         print(bishopMoves)
         if target in bishopMoves:
             board[data[2]][data[3]] = temp
@@ -145,6 +145,8 @@ def make_move(board):
     else:
         print("Invalid move")
     return board
+
+
 if __name__ == "__main__":
     board = new_board()
     # pretty_print(board)
